@@ -10,7 +10,7 @@ $cpus   = ENV.fetch("ISLANDORA_VAGRANT_CPUS", "1")
 $memory = ENV.fetch("ISLANDORA_VAGRANT_MEMORY", "4096")
 $hostname = ENV.fetch("ISLANDORA_VAGRANT_HOSTNAME", "claw")
 $virtualBoxDescription = ENV.fetch("ISLANDORA_VAGRANT_VIRTUALBOXDESCRIPTION", "IslandoraCLAW")
-
+$enableXDebug = ENV.fetch("ISLANDORA_ENABLE_XDEBUG", "0")
 # Available boxes are 'ubuntu/xenial64' and 'centos/7'
 $vagrantBox = ENV.fetch("ISLANDORA_DISTRO", "ubuntu/xenial64")
 
@@ -53,10 +53,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.galaxy_command = "ansible-galaxy install --role-file=%{role_file} --roles-path=roles/external"
     ansible.limit = "all"
     ansible.inventory_path = "inventory/vagrant"
+
     ansible.host_vars = {
-      "all" => { "ansible_ssh_user" => $vagrantUser }
-    }
-    ansible.extra_vars = { "islandora_distro" => $vagrantBox }
+       "all" => { "ansible_ssh_user" => $vagrantUser }
+     }
+
+    if $enableXDebug != "1"
+        ansible.extra_vars = { "islandora_distro" => $vagrantBox }
+    else
+      ansible_extra_vars = {
+         "islandora_distro" => $vagrantBox,
+         "php_xdebug_remote_enable" => "1",
+         "php_xdebug_remote_autostart" => "1",
+         "php_xdebug_remote_connect_back" => "1"
+      }
+    end
   end
 
 end

@@ -9,6 +9,7 @@
     - geerlingguy.apache
     - geerlingguy.php
     - geerlingguy.php-mysql
+    - geerlingguy.php-xdebug
     - geerlingguy.git
     - geerlingguy.composer
     - geerlingguy.drush
