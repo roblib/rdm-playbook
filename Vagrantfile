@@ -32,9 +32,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configure sync directory
   config.vm.synced_folder ".", home_dir + "/islandora"
+  config.vm.synced_folder "/users/aoneill/dev/claw", "/var/www/html/drupal/web", owner: "vagrant", group: "www-data", mount_options: ["dmode=775", "fmode=664"]
 
   config.vm.network :forwarded_port, guest: 8000, host: 8000 # Apache
-  config.vm.network :forwarded_port, guest: 8080, host: 8080 # Tomcat
+  config.vm.network :forwarded_port, guest: 8080, host: 8088 # Tomcat
   config.vm.network :forwarded_port, guest: 3306, host: 3306 # MySQL
   config.vm.network :forwarded_port, guest: 5432, host: 5432 # PostgreSQL
   config.vm.network :forwarded_port, guest: 8983, host: 8983 # Solr

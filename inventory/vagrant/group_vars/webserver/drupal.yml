@@ -1,22 +1,11 @@
 ---
 
-drupal_build_composer_project: true
+drupal_build_composer: true
+drupal_build_composer_project: false
+drupal_composer_path: drupal.composer.json
+drupal_build_makefile: false
 drupal_composer_install_dir: /var/www/html/drupal
 drupal_core_owner: "{{ ansible_user }}"
-drupal_composer_dependencies:
-  - "zaporylie/composer-drupal-optimizations:^1.0"
-  - "drupal/console:~1.0"
-  - "drupal/devel:^1.0@beta"
-  - "drupal/rdfui:1.x-dev"
-  - "drupal/restui:^1.13"
-  - "drupal/search_api_solr:^2.0"
-  - "drupal/facets:1.x-dev"
-  - "drupal/content_browser:^1.0@alpha"
-  - "drupal/matomo:^1.7"
-  - "drupal/pdf:1.x-dev"
-  - "islandora/carapace:dev-8.x-1.x"
-  - "islandora/openseadragon:dev-8.x-1.x"
-  - "islandora/islandora_demo:dev-8.x-1.x"
 drupal_composer_project_package: "islandora/drupal-project:8.6"
 drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction"
 drupal_core_path: "{{ drupal_composer_install_dir }}/web"
@@ -46,6 +35,7 @@ drupal_enable_modules:
   - pdf
   - islandora_core_feature
   - controlled_access_terms_default_configuration
+  - islandora_rdm_types
 drupal_trusted_hosts:
   - ^localhost$
 drupal_trusted_hosts_file: "{{ drupal_core_path }}/sites/default/settings.php"
