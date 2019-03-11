@@ -29,6 +29,12 @@
     - name: Run migrations
       command: "{{ drush_path }} --root {{ drupal_core_path }} -y -l localhost:{{ apache_listen_port }} --userid=1 mim --group=islandora"
 
+    - name: Add RDM requirement
+      command: composer -d {{ drupal_core_path }} repositories.islandora_rdm github https://github.com/roblib/islandora_rdm.git"
+
+    - name: Install islandora RDM modules
+      command: "composer -d {{ drupal_core_path }} require drupal/islandora_rdm"
+
     - name: Add vagrant user to webserver app user group
       user: name={{ vagrant_user }}
             group={{ webserver_app_user }}
