@@ -54,7 +54,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.limit = "all"
     ansible.inventory_path = "inventory/vagrant"
     ansible.host_vars = {
-      "all" => { "ansible_ssh_user" => $vagrantUser }
+      "all" => { "ansible_ssh_user" => $vagrantUser,
+               "ansible_ssh_common_args" => '-o StrictHostKeyChecking=no'}
     }
     ansible.extra_vars = { "islandora_distro" => $vagrantBox }
   end
