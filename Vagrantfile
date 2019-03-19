@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure sync directory
   config.vm.synced_folder ".", home_dir + "/islandora"
 
+  config.vm.synced_folder "/Users/aoneill/dev/claw", "/var/www/html/drupal/web"
+  
   config.vm.network :forwarded_port, guest: 8000, host: 8000 # Apache
   config.vm.network :forwarded_port, guest: 8080, host: 8080 # Tomcat
   config.vm.network :forwarded_port, guest: 3306, host: 3306 # MySQL
@@ -41,6 +43,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 8161, host: 8161 # Activemq
   config.vm.network :forwarded_port, guest: 8081, host: 8081 # API-X
 
+#  config.ssh.private_key_path = "~/.ssh/id_rsa"
+#  config.ssh.forward_agent = true
+
+  ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+  config.vm.provision 'shell', inline: 'mkdir -p /root/.ssh'
+  config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /root/.ssh/authorized_keys"
+  config.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys", privileged: false
+
+ 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ["modifyvm", :id, "--memory", $memory]
     vb.customize ["modifyvm", :id, "--cpus", $cpus]

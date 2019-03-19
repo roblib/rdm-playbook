@@ -33,7 +33,7 @@
 #      command: "sudo -u vagrant composer -d{{ drupal_core_path }}/.. config repositories.islandora_rdm github https://github.com/roblib/islandora_rdm.git"
       composer:
         command: config
-        arguments: repositories.islandora_rdm github https://github.com/roblib/islandora_rdm.git https
+        arguments: repositories.islandora_rdm github https://github.com/roblib/islandora_rdm.git
         working_dir: "{{ drupal_core_path }}/.."
         
     - name: Download islandora RDM modules
@@ -43,9 +43,10 @@
       composer:
         command: require
         arguments: drupal/islandora_rdm
+        working_dir: "{{ drupal_core_path }}/.."
 
     - name: Install Islandora RDM modules
-      command: "{{ drush_path }} --root {{ drupal_core_path }} -y -l localhost:{{ apache_listen_port }} --userid=1 en islandora_rdm_types"
+      command: "{{ drush_path }} --root {{ drupal_core_path }} -y en islandora_rdm_types"
       
     - name: Add vagrant user to webserver app user group
       user: name={{ vagrant_user }}
