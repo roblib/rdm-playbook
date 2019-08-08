@@ -12,7 +12,7 @@
       - "drupal/clamav:*"
       - "drupal/entity_print:*"
       - "islandora-rdm/islandora_rdm:dev-8.x-1.x"
-      - "islandora-rdm/islandora_text_extractoin:dev-8.x-1.x"
+      - "islandora-rdm/islandora_text_extraction:dev-8.x-1.x"
 
     rdm_drupal_enable_modules:
       - conditional_fields
