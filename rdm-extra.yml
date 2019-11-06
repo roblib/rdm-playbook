@@ -24,6 +24,7 @@
       - islandora_rdm_site
       - islandora_rdm_data_management_plan
       - islandora_text_extraction
+      - simple_sitemap
 
     rdm_services:
       - clamav-daemon
