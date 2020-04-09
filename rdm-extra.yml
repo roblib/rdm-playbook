@@ -25,6 +25,7 @@
       - "drupal/eu_cookie_compliance:*"
       - 'drupal/entity_reference_unpublished:^1.1'
       - 'islandora-rdm/islandora_datacite_doi:dev-8.x-1.x'
+      - 'drupal/redirect_after_login:^2.5'
 
     rdm_drupal_enable_modules:
       - entity_reference_unpublished
@@ -39,7 +40,7 @@
       - islandora_rdm_defaults
       - eu_cookie_compliance
 
-    rdm_drupal_enable_modules2:
+    rdm_drupal_enable_modules 2:
       - islandora_rdm_multifile_media
       - islandora_rdm_media_types
       - islandora_rdm_site
@@ -53,6 +54,7 @@
       - islandora_rdm_file_transmission_fixity
       - gdpr
       - islandora_rdm_solr_config
+      - redirect_after_login
 
 
   tasks:
