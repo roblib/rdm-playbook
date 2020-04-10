@@ -40,7 +40,7 @@
       - islandora_rdm_defaults
       - eu_cookie_compliance
 
-    rdm_drupal_enable_modules 2:
+    rdm_drupal_enable_modules2:
       - islandora_rdm_multifile_media
       - islandora_rdm_media_types
       - islandora_rdm_site
