@@ -61,7 +61,7 @@ CSV files and spreadsheets.
 
 The major architectural innovation included in the RDM platform
 over Islandora 8 core is the ability to generate derivative files streams
-and attach them to Media objects. Thus original file's are grouped 
+and attach them to Media objects. Thus original files are grouped 
 along with the derived datastreams such as thumbnails, service files,
  alternate formates and text transcripts. This facilitates site builders'
  ability to easily construct themes to display custom media types.
