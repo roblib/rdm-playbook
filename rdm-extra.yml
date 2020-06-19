@@ -15,8 +15,7 @@
       - "islandora-rdm/islandora_rdm:dev-8.x-1.x"
       - "islandora-rdm/islandora_rdm_defaults:dev-8.x-1.x"
       - "islandora-rdm/islandora_rdm_multifile_media:dev-8.x-1.x"
-      - "drupal/orcid:1.x-dev"
-      - "drupal/tus:1.x-dev"
+      - "drupal/orcid:1.x-dev" 
       - "drupal/uppy:1.x-dev"
       - "islandora-rdm/csv_field_preview"
       - "drupal/readonly_field_widget:^1.3"
@@ -46,8 +45,7 @@
       - islandora_rdm_site
       - islandora_rdm_data_management_plan
       - islandora_rdm_workflows
-      - orcid
-      - tus
+      - orcid 
       - uppy
       - csv_field_preview
       - readonly_field_widget
@@ -132,14 +130,5 @@
 
     - name: Set ORCID name field
       command: "{{ drush_path }} --root {{ drupal_core_path }} cset orcid.settings name_field field_orcid_id  -y"
-
-    - name: Uninstall Tus
-      command: "{{ drush_path }} --root=/var/www/html/drupal/web  pm-uninstall tus  -y"
-
-    - name: Reinstall Tus
-      command: "{{ drush_path }} --root=/var/www/html/drupal/web   en tus  -y"
-
-    - name: Set TUS Scheme
-      command: "{{ drush_path }} --root {{ drupal_core_path }} cset tus.settings scheme public://  -y"
 
 
