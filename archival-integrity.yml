@@ -1,0 +1,8 @@
+---
+
+- hosts: riprap, bagger
+  become: yes
+
+  roles:
+    - Islandora-Devops.riprap
+    - Islandora-Devops.bagger

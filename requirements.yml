@@ -99,3 +99,12 @@
 - src: https://github.com/Islandora-Devops/ansible-role-matomo
   name: Islandora-Devops.matomo
   version: main
+
+- src: geerlingguy.clamav
+  version: 1.3.2
+
+- src: https://github.com/roblib/Islandora-Devops.riprap.git
+  name: Islandora-Devops.riprap
+
+- src: https://github.com/roblib/Islandora-Devops.bagger.git
+  name: Islandora-Devops.bagger
